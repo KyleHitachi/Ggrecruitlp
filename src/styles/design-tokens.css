@@ -1,0 +1,141 @@
+/* ===========================================
+   GOOD GAME Design Tokens (Layer A)
+   3-tier: Reference -> System -> Component
+   =========================================== */
+
+:root {
+  /* --- Reference Tokens (Raw values) --- */
+  --ref-neutral-0: #FFFFFF;
+  --ref-neutral-50: #FAFAFA;
+  --ref-neutral-100: #F2F2F5;
+  --ref-neutral-200: #E0E0E8;
+  --ref-neutral-500: #6E6E82;
+  --ref-neutral-700: #3A3A4A;
+  --ref-neutral-900: #0D0D12;
+  --ref-red-50: rgba(229, 0, 32, 0.04);
+  --ref-red-500: #E50020;
+  --ref-red-600: #C0001A;
+  --ref-orange-500: #FF6B3D;
+
+  /* --- System Tokens (Semantic) --- */
+  --surface-default: var(--ref-neutral-0);
+  --surface-subtle: var(--ref-neutral-50);
+  --surface-muted: var(--ref-neutral-100);
+  --surface-dark: var(--ref-neutral-900);
+  --text-primary: var(--ref-neutral-900);
+  --text-secondary: var(--ref-neutral-700);
+  --text-muted: var(--ref-neutral-500);
+  --brand-primary: var(--ref-red-500);
+  --brand-primary-hover: var(--ref-red-600);
+  --brand-surface: var(--ref-red-50);
+  --accent-secondary: var(--ref-orange-500);
+  --brand-gradient: linear-gradient(135deg, var(--brand-primary) 0%, var(--accent-secondary) 100%);
+  --brand-gradient-subtle: linear-gradient(135deg, #e53e3e 0%, #f56565 100%);
+
+  /* --- Spacing Tokens (Layer B) --- */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  --space-4xl: 96px;
+  --space-5xl: 128px;
+
+  /* --- Component Tokens --- */
+  --btn-radius: 9999px;
+  --card-radius: 24px;
+  --card-radius-lg: 32px;
+  --card-padding: var(--space-xl);
+  --section-padding-y: var(--space-4xl);
+  --section-gap: var(--space-3xl);
+  --header-height: 72px;
+  --header-bg: rgba(250, 250, 250, 0.82);
+  --header-bg-scrolled: rgba(250, 250, 250, 0.95);
+  --header-blur: blur(24px) saturate(1.6);
+
+  /* --- Shadow Tokens --- */
+  --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.02);
+  --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.1);
+  --shadow-brand: 0 8px 24px rgba(229, 0, 32, 0.18);
+  --shadow-card-hover: 0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+/* ===========================================
+   Scroll Reveal Animations (Layer C)
+   =========================================== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-child > * {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-child.revealed > *:nth-child(1) { transition-delay: 0ms; }
+.reveal-child.revealed > *:nth-child(2) { transition-delay: 80ms; }
+.reveal-child.revealed > *:nth-child(3) { transition-delay: 160ms; }
+.reveal-child.revealed > *:nth-child(4) { transition-delay: 240ms; }
+.reveal-child.revealed > *:nth-child(5) { transition-delay: 320ms; }
+.reveal-child.revealed > *:nth-child(6) { transition-delay: 400ms; }
+
+.reveal-child.revealed > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===========================================
+   Reduced Motion (Layer C)
+   =========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .reveal-child > * {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  /* Functional motions: shorten only */
+  .site-header {
+    transition-duration: 0.1s !important;
+  }
+
+  button, a, .nav-link {
+    transition-duration: 0.1s !important;
+  }
+}
+
+/* ===========================================
+   Focus Visible (Layer D)
+   =========================================== */
+
+:focus-visible {
+  outline: 2px solid rgba(229, 0, 32, 0.4);
+  outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid rgba(229, 0, 32, 0.5);
+  outline-offset: 2px;
+}
