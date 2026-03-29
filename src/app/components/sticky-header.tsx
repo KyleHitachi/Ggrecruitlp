@@ -24,10 +24,10 @@ export function StickyHeader() {
         margin: '0 auto',
         height: 'var(--header-height, 72px)',
         backgroundColor: scrolled
-          ? 'var(--header-bg-scrolled, rgba(250,250,250,0.95))'
-          : 'var(--header-bg, rgba(250,250,250,0.82))',
-        backdropFilter: 'var(--header-blur, blur(24px) saturate(1.6))',
-        WebkitBackdropFilter: 'var(--header-blur, blur(24px) saturate(1.6))',
+          ? 'rgba(255,255,255,0.96)'
+          : 'rgba(255,255,255,0.88)',
+        backdropFilter: 'blur(16px)',
+        WebkitBackdropFilter: 'blur(16px)',
         borderBottom: scrolled
           ? '1px solid rgba(0,0,0,0.08)'
           : '1px solid rgba(0,0,0,0.04)',

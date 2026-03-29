@@ -66,7 +66,7 @@ const CATEGORIES: Category[] = [
             { label: '勤務時間', value: 'シフト制（店舗営業時間に準ずる）' },
             { label: '手当', value: '交通費全額支給、催事出勤手当あり' },
             { label: '福利厚生', value: '社会保険完備、キャリアアップ支援' },
-            { label: '取り扱いタイトル', value: 'ポケモンカードゲーム・デュエルマスターズ・MTG・ロルカナ・ワンピースカードゲーム・FaB・ヴァンガード・ホロライブカードゲーム・ガンダムカードゲーム' },
+            { label: '取り扱いタイトル', value: 'MTG・ポケモンカードゲーム・FaB・ロルカナ・ワンピースカードゲーム・ガンダムカードゲーム・デュエルマスターズ・ホロライブカードゲーム・ヴァンガード' },
           ],
         },
       },
@@ -248,21 +248,35 @@ export function JobPositions() {
         {/* Section Header */}
         <Reveal>
           <div style={{ marginBottom: 'var(--space-xl, 32px)' }}>
+            <p
+              style={{
+                fontSize: '0.75rem',
+                fontWeight: 700,
+                color: 'var(--text-muted, #6e6e82)',
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                fontFamily: "'Inter', sans-serif",
+                marginBottom: 'var(--space-sm, 8px)',
+              }}
+            >
+              Open Positions
+            </p>
             <h2
               className="mb-3"
-              style={{ fontWeight: 900, fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', color: 'var(--text-primary, #1a1a1a)' }}
+              style={{ fontWeight: 900, fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', color: 'var(--text-primary, #0d0d12)' }}
             >
               募集職種
             </h2>
             <div
-              className="rounded-full mb-5"
+              className="mb-5"
               style={{
                 width: 40,
-                height: 4,
-                background: 'var(--brand-gradient-subtle, linear-gradient(90deg, #e53e3e 0%, #f56565 100%))',
+                height: 3,
+                backgroundColor: 'var(--brand-primary, #e50020)',
+                borderRadius: 1,
               }}
             />
-            <p style={{ color: 'var(--text-muted, #6e6e82)', fontSize: '1rem', lineHeight: 1.8, maxWidth: 720 }}>
+            <p style={{ color: 'var(--text-muted, #6e6e82)', fontSize: '0.95rem', lineHeight: 1.8, maxWidth: 720 }}>
               店舗・通販・事業推進の3領域で5ポジションを募集中。未経験からの挑戦も、経験を活かしたステップアップも歓迎です。
             </p>
           </div>

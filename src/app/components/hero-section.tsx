@@ -1,4 +1,7 @@
 import { Reveal } from './reveal';
+import { ImageWithFallback } from './figma/ImageWithFallback';
+
+const HERO_IMG = 'https://images.unsplash.com/photo-1701759285696-1452708c8659?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xsZWN0aWJsZSUyMGNhcmQlMjBzaG9wJTIwZGlzcGxheSUyMGNhc2UlMjByZXRhaWx8ZW58MXx8fHwxNzc0NTMxNTQ2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral';
 
 export function HeroSection() {
   return (
@@ -10,215 +13,185 @@ export function HeroSection() {
         fontFamily: "'Zen Kaku Gothic New', sans-serif",
       }}
     >
-      {/* Background gradient */}
+      {/* Background — warm off-white, no diamond pattern */}
       <div
         className="absolute inset-0"
         style={{
-          background: 'linear-gradient(180deg, #ffffff 0%, #fff5f5 100%)',
+          background: 'linear-gradient(180deg, #ffffff 0%, #faf8f6 60%, #f5f0ec 100%)',
         }}
       />
 
-      {/* Diamond pattern overlay */}
+      {/* Subtle accent line at top */}
       <div
-        className="absolute inset-0 opacity-[0.15]"
+        className="absolute top-0 left-0 right-0"
         style={{
-          backgroundImage: `
-            repeating-linear-gradient(45deg, transparent, transparent 35px, #e53e3e 35px, #e53e3e 36px),
-            repeating-linear-gradient(-45deg, transparent, transparent 35px, #e53e3e 35px, #e53e3e 36px)
-          `,
-          backgroundSize: '50px 50px',
+          height: 3,
+          background: 'linear-gradient(90deg, var(--brand-primary, #e50020) 0%, var(--accent-secondary, #FF6B3D) 100%)',
         }}
       />
-
-      {/* Mountain silhouette decoration at bottom */}
-      <div className="absolute bottom-0 left-0 right-0 h-48">
-        <svg
-          viewBox="0 0 1440 192"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-full"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M0,192 L0,96 L240,32 L480,64 L720,16 L960,48 L1200,80 L1440,40 L1440,192 Z"
-            fill="rgba(229, 62, 62, 0.04)"
-          />
-          <path
-            d="M0,192 L0,128 L360,72 L600,112 L840,56 L1080,96 L1320,120 L1440,88 L1440,192 Z"
-            fill="rgba(229, 62, 62, 0.05)"
-          />
-        </svg>
-      </div>
 
       {/* Content */}
       <div
-        className="relative mx-auto px-8 flex items-center gap-12 flex-wrap"
+        className="relative mx-auto px-8"
         style={{
           maxWidth: '1100px',
           paddingTop: 'var(--space-5xl, 128px)',
           paddingBottom: 'var(--space-4xl, 96px)',
         }}
       >
-        {/* Left column */}
-        <div className="flex-1" style={{ minWidth: 320 }}>
-          {/* Frosted glass scrim for readability (Layer E) */}
-          <Reveal>
-            {/* Label Badge */}
-            <div className="mb-6">
-              <span
-                className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium"
+        <div className="flex items-start gap-20 flex-wrap lg:flex-nowrap">
+          {/* Left column — copy */}
+          <div className="flex-1" style={{ minWidth: 320 }}>
+            <Reveal>
+              {/* Context badge — shop-specific */}
+              <div className="mb-6">
+                <span
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-md text-sm"
+                  style={{
+                    color: 'var(--brand-primary, #e50020)',
+                    backgroundColor: 'rgba(229, 0, 32, 0.05)',
+                    border: '1px solid rgba(229, 0, 32, 0.12)',
+                    fontWeight: 600,
+                    letterSpacing: '0.02em',
+                  }}
+                >
+                  <span style={{ fontSize: '0.7rem', opacity: 0.6 }}>●</span>
+                  TCG専門店 GOOD GAME — 採用情報
+                </span>
+              </div>
+            </Reveal>
+
+            <Reveal delay={80}>
+              {/* Main heading — TCG industry specific */}
+              <h1
+                className="leading-tight max-[640px]:whitespace-normal"
                 style={{
-                  color: 'var(--brand-primary, #e50020)',
-                  border: '1.5px solid var(--brand-primary, #e50020)',
-                  backgroundColor: 'var(--brand-surface, rgba(229,0,32,0.04))',
+                  fontSize: 'clamp(2.4rem, 4.8vw, 3.6rem)',
+                  fontWeight: 900,
+                  color: 'var(--text-primary, #0d0d12)',
+                  marginBottom: 'var(--space-md, 16px)',
+                  letterSpacing: '-0.03em',
                 }}
               >
-                TWO SIDE UP / GOOD GAME
-              </span>
-            </div>
-          </Reveal>
-
-          <Reveal delay={80}>
-            {/* Heading */}
-            <h1
-              className="mb-0 leading-tight whitespace-nowrap max-[640px]:whitespace-normal"
-              style={{
-                fontSize: 'clamp(2.4rem, 5vw, 3.8rem)',
-                fontWeight: 900,
-                color: 'var(--text-primary, #0d0d12)',
-              }}
-            >
-              好きだけじゃ終われない人へ。
-            </h1>
-            <p
-              className="mb-6"
-              style={{
-                fontSize: 'clamp(1.4rem, 3vw, 2.2rem)',
-                fontWeight: 700,
-                color: 'var(--brand-primary, #e50020)',
-                marginTop: 'var(--space-sm, 8px)',
-              }}
-            >
-              GOOD GAMEは、まだ始まったばかりだ。
-            </p>
-          </Reveal>
-
-          <Reveal delay={160}>
-            {/* Description */}
-            <p
-              className="mb-8 leading-relaxed"
-              style={{
-                color: 'var(--text-secondary, #3a3a4a)',
-                maxWidth: '680px',
-                fontSize: '1.05rem',
-                lineHeight: '1.8',
-              }}
-            >
-              GOOD GAMEは、流山おおたかの森を拠点にMTG・ポケカ・ロルカナなどを扱うTCG専門店です。母体はWeb・EC運用のプロ集団。肩書きより手を挙げる人が評価される会社です。店舗と通販をひとつのチームで進化させながら、一緒に成長できる仲間を探しています。
-            </p>
-          </Reveal>
-
-          <Reveal delay={240}>
-            {/* Note Box */}
-            <div
-              className="mb-8 p-5 rounded"
-              style={{
-                maxWidth: '680px',
-                backgroundColor: 'var(--surface-subtle, #fafafa)',
-                borderLeft: '4px solid var(--brand-primary, #e50020)',
-              }}
-            >
-              <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary, #3a3a4a)' }}>
-                秋葉原をはじめ、横浜・大阪・福岡への出店構想も進行中。入社1年で役員候補に抜擢された実績もあります。
+                好きなカードで、
+                <br />
+                ちゃんと働く。
+              </h1>
+              <p
+                style={{
+                  fontSize: 'clamp(1.15rem, 2.3vw, 1.65rem)',
+                  fontWeight: 700,
+                  color: 'var(--brand-primary, #e50020)',
+                  marginBottom: 'var(--space-xl, 32px)',
+                  lineHeight: 1.4,
+                }}
+              >
+                遊ぶ側から、支える側へ。
               </p>
-            </div>
-          </Reveal>
+            </Reveal>
 
-          <Reveal delay={320}>
-            {/* Buttons — extra whitespace above (Layer B: space-3xl) */}
-            <div className="flex flex-wrap gap-4" style={{ marginTop: 'var(--space-3xl, 64px)', marginBottom: 'var(--space-xl, 32px)' }}>
-              <a
-                href="#募集職種"
-                className="px-8 py-3.5 rounded-full text-white inline-block transition-all"
+            <Reveal delay={160}>
+              <p
+                className="leading-relaxed"
                 style={{
-                  background: 'var(--brand-gradient-subtle, linear-gradient(135deg, #e53e3e 0%, #f56565 100%))',
+                  color: 'var(--text-secondary, #3a3a4a)',
+                  maxWidth: '580px',
                   fontSize: '1rem',
-                  fontWeight: 700,
-                  textDecoration: 'none',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.boxShadow = 'var(--shadow-brand, 0 8px 24px rgba(229,0,32,0.18))';
-                  e.currentTarget.style.transform = 'translateY(-2px)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.boxShadow = 'none';
-                  e.currentTarget.style.transform = 'translateY(0)';
+                  lineHeight: '1.85',
+                  marginBottom: 'var(--space-xl, 32px)',
                 }}
               >
-                募集職種を見る
-              </a>
-              <a
-                href="#応募の流れ"
-                className="px-8 py-3.5 rounded-full inline-block transition-all"
+                GOOD GAMEは流山おおたかの森のTCG専門店。MTG・ポケモンカードゲーム・FaB・ロルカナ・ワンピースカードゲーム・ガンダムカードゲーム・デュエルマスターズ・ホロライブカードゲーム・ヴァンガードの販売・買取・大会運営・EC通販を一手に担っています。母体はWeb・EC運用のプロ集団。肩書きより手を挙げる人が評価される会社です。
+              </p>
+            </Reveal>
+
+            <Reveal delay={240}>
+              {/* Note — concrete, not abstract */}
+              <div
+                className="p-4 mb-10"
                 style={{
-                  color: 'var(--brand-primary, #e50020)',
-                  border: '2px solid var(--brand-primary, #e50020)',
-                  backgroundColor: 'transparent',
-                  fontSize: '1rem',
-                  fontWeight: 700,
-                  textDecoration: 'none',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = 'var(--brand-surface, rgba(229,0,32,0.04))';
-                  e.currentTarget.style.transform = 'translateY(-2px)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = 'transparent';
-                  e.currentTarget.style.transform = 'translateY(0)';
+                  maxWidth: '580px',
+                  backgroundColor: '#f7f6f4',
+                  borderLeft: '3px solid var(--brand-primary, #e50020)',
+                  borderRadius: '0 8px 8px 0',
                 }}
               >
-                応募の流れ
-              </a>
-            </div>
+                <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary, #3a3a4a)' }}>
+                  秋葉原・横浜・大阪・福岡への出店構想が進行中。入社1年で役員候補に抜擢された実績あり。
+                </p>
+              </div>
+            </Reveal>
 
-            {/* Divider */}
-            <div
-              className="h-1 rounded-full"
-              style={{
-                width: '60px',
-                background: 'var(--brand-gradient-subtle, linear-gradient(90deg, #e53e3e 0%, #f56565 100%))',
-              }}
-            />
+            <Reveal delay={320}>
+              {/* CTAs — clear hierarchy: primary = カジュアル面談, secondary = 募集職種 */}
+              <div className="flex flex-wrap gap-3">
+                <a
+                  href="#応募の流れ"
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-lg text-white transition-all"
+                  style={{
+                    background: 'var(--brand-primary, #e50020)',
+                    fontSize: '0.95rem',
+                    fontWeight: 700,
+                    textDecoration: 'none',
+                    boxShadow: '0 2px 8px rgba(229, 0, 32, 0.2)',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.boxShadow = '0 6px 20px rgba(229, 0, 32, 0.3)';
+                    e.currentTarget.style.transform = 'translateY(-1px)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.boxShadow = '0 2px 8px rgba(229, 0, 32, 0.2)';
+                    e.currentTarget.style.transform = 'translateY(0)';
+                  }}
+                >
+                  まず話を聞いてみる
+                </a>
+                <a
+                  href="#募集職種"
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-lg transition-all"
+                  style={{
+                    color: 'var(--text-secondary, #3a3a4a)',
+                    border: '1px solid rgba(0,0,0,0.15)',
+                    backgroundColor: 'transparent',
+                    fontSize: '0.95rem',
+                    fontWeight: 600,
+                    textDecoration: 'none',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.03)';
+                    e.currentTarget.style.borderColor = 'rgba(0,0,0,0.25)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = 'transparent';
+                    e.currentTarget.style.borderColor = 'rgba(0,0,0,0.15)';
+                  }}
+                >
+                  募集職種を見る
+                </a>
+              </div>
+            </Reveal>
+          </div>
+
+          {/* Right column — real store photo */}
+          <Reveal delay={200}>
+            <div className="shrink-0 relative" style={{ width: 480 }}>
+              <div
+                className="overflow-hidden"
+                style={{
+                  borderRadius: '20px',
+                  boxShadow: '0 12px 48px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04)',
+                }}
+              >
+                <ImageWithFallback
+                  src={HERO_IMG}
+                  alt="GOOD GAME 店舗のカードディスプレイ"
+                  className="w-full object-cover"
+                  style={{ height: 360, display: 'block' }}
+                />
+              </div>
+            </div>
           </Reveal>
         </div>
-
-        {/* Right column - Store photo placeholder */}
-        <Reveal delay={200}>
-          <div
-            className="shrink-0 flex flex-col items-center justify-center gap-3"
-            style={{
-              width: 480,
-              height: 320,
-              borderRadius: 'var(--card-radius, 24px)',
-              backgroundColor: 'var(--surface-muted, #f2f2f5)',
-            }}
-          >
-            <svg
-              width="36"
-              height="36"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#b0b0ba"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
-              <circle cx="12" cy="13" r="4" />
-            </svg>
-            <span style={{ color: '#b0b0ba', fontSize: '0.82rem', fontWeight: 600 }}>店舗写真</span>
-          </div>
-        </Reveal>
       </div>
     </section>
   );

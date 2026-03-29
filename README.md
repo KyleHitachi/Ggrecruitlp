@@ -1,7 +1,7 @@
 
-  # 採用LPヒーローセクション作成
+  # 無題
 
-  This is a code bundle for 採用LPヒーローセクション作成. The original project is available at https://www.figma.com/design/C1jBEb9CTnKzfqa5Xr4asn/%E6%8E%A1%E7%94%A8LP%E3%83%92%E3%83%BC%E3%83%AD%E3%83%BC%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E4%BD%9C%E6%88%90.
+  This is a code bundle for 無題. The original project is available at https://www.figma.com/design/C1jBEb9CTnKzfqa5Xr4asn/%E7%84%A1%E9%A1%8C.
 
   ## Running the code
 

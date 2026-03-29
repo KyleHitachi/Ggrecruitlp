@@ -47,7 +47,7 @@ const REPRESENTATIVE_QA: QAItem[] = [
     question: '最後に、応募を検討している方へメッセージをお願いします。',
     paragraphs: [
       'いきなり面接や転職となるとハードルが高いと思うので、まずはカジュアルなランチ面談で僕とお話ししませんか。',
-      '履歴書だけで落とすようなことはしません。美味しいご飯を食べながら、ざっくばらんに会話することで、お互いの本来の良さが見えてくると思っています。とりあえず話を聞いてみたいくらいで構いませんので、少しでも興味を持っていただけたら、ぜひ気軽に応募してください。お待ちしています。',
+      '美味しいご飯を食べながら、ざっくばらんに会話することで、お互いの本来の良さが見えてくると思っています。とりあえず話を聞いてみたいくらいで構いませんので、少しでも興味を持っていただけたら、ぜひ気軽に応募してください。お待ちしています。',
     ],
   },
 ];
@@ -124,18 +124,32 @@ export function InterviewSection() {
         {/* Section Header */}
         <Reveal>
           <div className="mb-10">
+            <p
+              style={{
+                fontSize: '0.75rem',
+                fontWeight: 700,
+                color: 'var(--text-muted, #6e6e82)',
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                fontFamily: "'Inter', sans-serif",
+                marginBottom: 'var(--space-sm, 8px)',
+              }}
+            >
+              Interviews
+            </p>
             <h2
               className="mb-3"
-              style={{ fontWeight: 900, fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', color: 'var(--text-primary, #1a1a1a)' }}
+              style={{ fontWeight: 900, fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', color: 'var(--text-primary, #0d0d12)' }}
             >
               インタビュー
             </h2>
             <div
-              className="rounded-full mb-5"
+              className="mb-5"
               style={{
                 width: 40,
-                height: 4,
-                background: 'var(--brand-gradient-subtle, linear-gradient(90deg, #e53e3e 0%, #f56565 100%))',
+                height: 3,
+                backgroundColor: 'var(--brand-primary, #e50020)',
+                borderRadius: 1,
               }}
             />
           </div>
@@ -179,7 +193,7 @@ export function InterviewSection() {
           <div id="interview-representative">
             <InterviewCard
               title="代表インタビュー"
-              lead="カードゲームが好きという気持ちを土台に、自分らしいキャリアを描ける場所を作りたい。"
+              lead="カードゲームが好きという気持を土台に、自分らしいキャリアを描ける場所を作りたい。"
               name="代表取締役社長 ゴードン"
               speaker="ゴードン"
               qaList={REPRESENTATIVE_QA}

@@ -5,16 +5,16 @@ import { Reveal } from './reveal';
 const STEPS = [
   {
     step: '1',
-    title: 'エントリー',
+    title: '応募フォーム記入',
     description:
-      '応募方法の詳細は現在準備中です。公開後、こちらのページでご案内します。履歴書と職務経歴書は事前にご準備ください。アルバイト応募や未経験の方は、書式自由の簡易形式で問題ありません。',
+      '下記の応募フォームに必要事項をご記入ください。履歴書と職務経歴書をアップロードし、お名前・連絡先などの基本情報を入力してください。',
     icon: FileText,
   },
   {
     step: '2',
     title: 'ランチ面談',
     description:
-      '代表のゴードンやスタッフと一緒に食事をしながら、お互いの期待値をすり合わせます。履歴書だけで落とすことはしません。代金はもちろん会社負担です。',
+      '代表のゴードンやスタッフと一緒に食事をしながら、お互いの期待値をすり合わせます。カジュアルな雰囲気でざっくばらんにお話ししましょう。代金はもちろん会社負担です。',
     icon: Users,
   },
   {
@@ -50,18 +50,32 @@ export function ApplicationProcess() {
       >
         <Reveal>
           <div style={{ marginBottom: 'var(--space-xl, 32px)' }}>
+            <p
+              style={{
+                fontSize: '0.75rem',
+                fontWeight: 700,
+                color: 'var(--text-muted, #6e6e82)',
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                fontFamily: "'Inter', sans-serif",
+                marginBottom: 'var(--space-sm, 8px)',
+              }}
+            >
+              How to Apply
+            </p>
             <h2
               className="mb-3"
-              style={{ fontWeight: 900, fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', color: 'var(--text-primary, #1a1a1a)' }}
+              style={{ fontWeight: 900, fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', color: 'var(--text-primary, #0d0d12)' }}
             >
               応募の流れ
             </h2>
             <div
-              className="rounded-full mb-5"
+              className="mb-5"
               style={{
                 width: 40,
-                height: 4,
-                background: 'var(--brand-gradient-subtle, linear-gradient(90deg, #e53e3e 0%, #f56565 100%))',
+                height: 3,
+                backgroundColor: 'var(--brand-primary, #e50020)',
+                borderRadius: 1,
               }}
             />
           </div>

@@ -1,18 +1,26 @@
-import { useState } from 'react';
 import { InlineCtaBanner } from './inline-cta-banner';
 import { Reveal } from './reveal';
+import { ImageWithFallback } from './figma/ImageWithFallback';
 
 interface JobCard {
   title: string;
+  tag: string;
+  tagColor: string;
   description: string;
   items: string[];
-  imageLabel: string;
+  photo: string;
+  photoAlt: string;
+  accentColor: string;
 }
 
 const CARDS: JobCard[] = [
   {
     title: '店舗の仕事',
-    imageLabel: '店舗業務イメージ',
+    tag: '接客・査定・イベント運営',
+    tagColor: '#e50020',
+    accentColor: '#e50020',
+    photo: 'https://images.unsplash.com/photo-1764795849833-6e9d6e399a77?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZXRhaWwlMjBzdG9yZSUyMGVtcGxveWVlJTIwY3VzdG9tZXIlMjBzZXJ2aWNlJTIwY291bnRlcnxlbnwxfHx8fDE3NzQ1MzE1NDF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    photoAlt: '[実店舗での接客風景]',
     description:
       'お客様の「楽しい」が生まれる最前線。接客・レジ対応からスタートし、買取査定、商品管理・売場づくり、大会・イベント運営まで、現場のあらゆる業務を担います。MTGやポケカのトーナメントが盛り上がる瞬間を自分でつくれるのが、この仕事の醍醐味。オリパや福袋の企画など、商品づくりに関わるチャンスもあります。',
     items: [
@@ -25,7 +33,11 @@ const CARDS: JobCard[] = [
   },
   {
     title: '通販の仕事',
-    imageLabel: '通販業務イメージ',
+    tag: '受注・検品・発送・データ管理',
+    tagColor: '#2563eb',
+    accentColor: '#2563eb',
+    photo: 'https://images.unsplash.com/photo-1609559376553-930b6209cc4c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3YXJlaG91c2UlMjB3b3JrZXIlMjBwYWNraW5nJTIwc2hpcHBpbmclMjBib3hlc3xlbnwxfHx8fDE3NzQ1MzE1NDF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    photoAlt: '[通販の梱包・発送作業風景]',
     description:
       '50万点を超える商品データベースの運営から、ピッキング、検品、梱包、発送まで。画面の向こうにいるお客様に「ここで買ってよかった」と思ってもらえるかは、通販チームの仕事の精度にかかっています。カスタマーサポートや商品データの整備など、表には見えにくいけれど事業の根幹を支えるポジションです。',
     items: [
@@ -37,7 +49,11 @@ const CARDS: JobCard[] = [
   },
   {
     title: 'デジタル・メディア',
-    imageLabel: 'デジタル業務イメージ',
+    tag: 'EC基盤・業務改善・配信',
+    tagColor: '#7c3aed',
+    accentColor: '#7c3aed',
+    photo: 'https://images.unsplash.com/photo-1770910278198-eed8b040554b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlY29tbWVyY2UlMjB3YXJlaG91c2UlMjBpbnZlbnRvcnklMjBzaGVsdmVzJTIwb3JnYW5pemVkfGVufDF8fHx8MTc3NDUzMTU0Mnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    photoAlt: '[EC運用・デジタル業務の作業環境]',
     description:
       '母体のツーサイドアップが持つWeb・EC運用の知見を活かし、EC基盤の運用改善から業務フローの効率化まで、デジタル面でGOOD GAMEを支えます。また、店舗プレイスペースでの再開を予定しているライブ配信「GOOD GAME BREAK」への出演も、意欲があれば前向きに検討します。',
     items: [
@@ -66,31 +82,45 @@ export function JobIntroduction() {
         {/* Section Header */}
         <Reveal>
           <div style={{ marginBottom: 'var(--space-xl, 32px)' }}>
+            <p
+              style={{
+                fontSize: '0.75rem',
+                fontWeight: 700,
+                color: 'var(--text-muted, #6e6e82)',
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                fontFamily: "'Inter', sans-serif",
+                marginBottom: 'var(--space-sm, 8px)',
+              }}
+            >
+              Work at GOOD GAME
+            </p>
             <h2
               className="mb-3"
-              style={{ fontWeight: 900, fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', color: 'var(--text-primary, #1a1a1a)' }}
+              style={{ fontWeight: 900, fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', color: 'var(--text-primary, #0d0d12)' }}
             >
               仕事紹介
             </h2>
             <div
-              className="rounded-full mb-5"
+              className="mb-5"
               style={{
                 width: 40,
-                height: 4,
-                background: 'var(--brand-gradient-subtle, linear-gradient(90deg, #e53e3e 0%, #f56565 100%))',
+                height: 3,
+                backgroundColor: 'var(--brand-primary, #e50020)',
+                borderRadius: 1,
               }}
             />
-            <p style={{ color: 'var(--text-muted, #6e6e82)', fontSize: '1rem', lineHeight: 1.8 }}>
-              GOOD GAMEでは、店舗・通販・デジタルの3つの領域で日々仕事が動いています。それぞれの現場の具体像をお伝えします。
+            <p style={{ color: 'var(--text-muted, #6e6e82)', fontSize: '0.95rem', lineHeight: 1.8, maxWidth: 640 }}>
+              店舗・通販・デジタルの3つの現場。それぞれ求められるスキルも、やりがいも異なります。
             </p>
           </div>
         </Reveal>
 
-        {/* Cards */}
-        <div className="flex flex-col" style={{ gap: 'var(--space-xl, 32px)' }}>
+        {/* Cards — each visually distinct by accent color */}
+        <div className="flex flex-col" style={{ gap: 'var(--space-lg, 24px)' }}>
           {CARDS.map((card, i) => (
             <Reveal key={card.title} delay={i * 100}>
-              <Card card={card} />
+              <JobCardComponent card={card} />
             </Reveal>
           ))}
         </div>
@@ -104,101 +134,94 @@ export function JobIntroduction() {
   );
 }
 
-function Card({ card }: { card: JobCard }) {
-  const [hovered, setHovered] = useState(false);
-
+function JobCardComponent({ card }: { card: JobCard }) {
   return (
     <div
-      className="relative overflow-hidden transition-all"
+      className="overflow-hidden transition-all"
       style={{
         backgroundColor: 'var(--surface-default, #ffffff)',
-        borderRadius: 'var(--card-radius-lg, 32px)',
-        border: '1px solid rgba(0,0,0,0.06)',
-        padding: 0,
-        boxShadow: hovered
-          ? 'var(--shadow-card-hover, 0 12px 32px rgba(0,0,0,0.08))'
-          : 'var(--shadow-md, 0 8px 32px rgba(0,0,0,0.06))',
-        transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
-        transitionDuration: '300ms',
-        transitionTimingFunction: 'ease',
+        borderRadius: 16,
+        border: '1px solid rgba(0,0,0,0.07)',
+        transitionDuration: '0.3s',
       }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.06)';
+        e.currentTarget.style.transform = 'translateY(-2px)';
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.boxShadow = 'none';
+        e.currentTarget.style.transform = 'translateY(0)';
+      }}
     >
-      {/* Image placeholder */}
-      <div
-        className="flex flex-col items-center justify-center gap-2 w-full"
-        style={{
-          height: 180,
-          backgroundColor: 'var(--surface-muted, #f2f2f5)',
-          borderRadius: '16px 16px 0 0',
-        }}
-      >
-        <svg
-          width="28"
-          height="28"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="#b0b0ba"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
+      {/* Photo strip */}
+      <div className="relative w-full" style={{ height: 200 }}>
+        <ImageWithFallback
+          src={card.photo}
+          alt={card.photoAlt}
+          className="w-full h-full object-cover"
+          style={{ display: 'block' }}
+        />
+        {/* Dark overlay for readability */}
+        <div
+          className="absolute inset-0"
+          style={{ background: 'linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.5) 100%)' }}
+        />
+        {/* Category tag — shop-style label */}
+        <div
+          className="absolute top-4 left-4 flex items-center gap-2"
         >
-          <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
-          <circle cx="12" cy="13" r="4" />
-        </svg>
-        <span style={{ color: '#b0b0ba', fontSize: '0.78rem', fontWeight: 600 }}>{card.imageLabel}</span>
+          <span
+            className="px-3 py-1 rounded"
+            style={{
+              backgroundColor: card.tagColor,
+              color: '#fff',
+              fontSize: '0.7rem',
+              fontWeight: 700,
+              letterSpacing: '0.02em',
+            }}
+          >
+            {card.tag}
+          </span>
+        </div>
+        {/* Title overlay at bottom of photo */}
+        <div className="absolute bottom-4 left-5 right-5">
+          <h3
+            style={{
+              fontWeight: 900,
+              fontSize: '1.3rem',
+              color: '#fff',
+              textShadow: '0 1px 4px rgba(0,0,0,0.3)',
+            }}
+          >
+            {card.title}
+          </h3>
+        </div>
       </div>
 
-      <div style={{ padding: 'var(--card-padding, 32px) 44px 40px' }}>
-        {/* Top gradient line */}
-        <div
-          className="absolute top-0 left-0 right-0 transition-opacity"
-          style={{
-            height: 4,
-            background: 'var(--brand-gradient-subtle, linear-gradient(90deg, #e53e3e 0%, #f56565 100%))',
-            opacity: hovered ? 1 : 0,
-            transitionDuration: '300ms',
-          }}
-        />
-
-        {/* Title with red left border */}
-        <h3
-          className="mb-4"
-          style={{
-            borderLeft: '4px solid var(--brand-primary, #e50020)',
-            paddingLeft: 'var(--space-md, 16px)',
-            fontWeight: 900,
-            fontSize: '1.25rem',
-            color: 'var(--text-primary, #1a1a1a)',
-          }}
-        >
-          {card.title}
-        </h3>
-
+      <div style={{ padding: '24px 28px 28px' }}>
         {/* Description */}
         <p
           className="mb-5"
-          style={{ color: 'var(--text-secondary, #3a3a4a)', fontSize: '0.95rem', lineHeight: 1.85, maxWidth: 720 }}
+          style={{ color: 'var(--text-secondary, #3a3a4a)', fontSize: '0.92rem', lineHeight: 1.85, maxWidth: 720 }}
         >
           {card.description}
         </p>
 
-        {/* Bullet list */}
-        <ul className="flex flex-wrap gap-x-6 gap-y-2">
+        {/* Bullet list — with accent-colored dots */}
+        <ul className="flex flex-col gap-2">
           {card.items.map((item) => (
             <li
               key={item}
-              className="flex items-center gap-2"
-              style={{ color: 'var(--text-secondary, #3a3a4a)', fontSize: '0.9rem' }}
+              className="flex items-start gap-3"
+              style={{ color: 'var(--text-secondary, #3a3a4a)', fontSize: '0.88rem', lineHeight: 1.7 }}
             >
               <span
+                className="shrink-0 mt-2"
                 style={{
-                  display: 'inline-block',
                   width: 6,
                   height: 6,
                   borderRadius: '50%',
-                  backgroundColor: 'var(--brand-primary, #e50020)',
+                  backgroundColor: card.accentColor,
                   flexShrink: 0,
                 }}
               />

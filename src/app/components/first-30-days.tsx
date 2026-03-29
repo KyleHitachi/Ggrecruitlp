@@ -47,18 +47,32 @@ export function First30Days() {
       >
         <Reveal>
           <div style={{ marginBottom: 'var(--space-xl, 32px)' }}>
+            <p
+              style={{
+                fontSize: '0.75rem',
+                fontWeight: 700,
+                color: 'var(--text-muted, #6e6e82)',
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                fontFamily: "'Inter', sans-serif",
+                marginBottom: 'var(--space-sm, 8px)',
+              }}
+            >
+              First 30 Days
+            </p>
             <h2
               className="mb-3"
-              style={{ fontWeight: 900, fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', color: 'var(--text-primary, #1a1a1a)' }}
+              style={{ fontWeight: 900, fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', color: 'var(--text-primary, #0d0d12)' }}
             >
               入社後最初の30日
             </h2>
             <div
-              className="rounded-full mb-5"
+              className="mb-5"
               style={{
                 width: 40,
-                height: 4,
-                background: 'var(--brand-gradient-subtle, linear-gradient(90deg, #e53e3e 0%, #f56565 100%))',
+                height: 3,
+                backgroundColor: 'var(--brand-primary, #e50020)',
+                borderRadius: 1,
               }}
             />
           </div>
